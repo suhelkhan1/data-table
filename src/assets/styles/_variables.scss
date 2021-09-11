@@ -1,0 +1,14 @@
+$font-family: 'Verdana', sans-serif;
+
+:root {
+  --primary-color: #5863CC;
+  --primary-color-rbg: 88, 99, 204;
+}
+
+// Colors
+$primary-color: var(--primary-color);
+$primary-color-rbg: var(--primary-color-rgb);
+$gray-1: #444444;
+$gray-2: #EEEEEE;
+$shadow: 0px 4px 8px rgba(var(--primary-color-rbg), 0.3);
+

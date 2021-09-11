@@ -1,0 +1,6 @@
+<div class="search-wrapper">
+  <div>Show 10 entries</div>
+  <form [formGroup]="searchForm">
+    <app-input [config]="{group: searchForm, controlName: 'name', label: 'Search by first name'}" (inputChange)="search($event)"></app-input>
+  </form>
+</div>

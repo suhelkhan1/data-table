@@ -1,0 +1,8 @@
+<mat-form-field [appearance]="config?.appearance" [formGroup]="config?.group">
+  <mat-label>{{config?.label}}</mat-label>
+  <input [type]="config?.type" matInput
+        [formControl]="config?.group?.get(config?.controlName)"
+        [placeholder]="config?.placeholder"
+        autocomplete="off"
+        (input)="inputChange.emit(config?.group?.get(config?.controlName)?.value)">
+</mat-form-field>

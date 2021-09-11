@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'utils';
+
+.search-wrapper {
+  @include flex(center, space-between);
+  height: 70px;
+  padding: 5px;
+  form {
+    width: 300px;
+  }
+}

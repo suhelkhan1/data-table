@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: $gray-1;
+  font-family: $font-family;
+}
+
+@mixin flex($ai:normal, $jc:normal, $fd:row) {
+  display: flex;
+  align-items: $ai;
+  justify-content: $jc;
+  flex-direction: $fd;
+}
+
+@mixin text-style($fs:normal, $fw:normal, $lh:normal) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}

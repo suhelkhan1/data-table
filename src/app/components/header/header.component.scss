@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'utils';
+
+header {
+  box-shadow: $shadow;
+  .container {
+    height: 50px;
+    @include flex(center);
+  }
+}
