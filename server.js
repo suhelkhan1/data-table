@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
+app.use(compression());
 app.use(compression(express.static(__dirname + '/dist/data-table')));
 
 app.get('/*', function(req, res) {
