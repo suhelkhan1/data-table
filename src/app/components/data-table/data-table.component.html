@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of users | async; trackBy:trackById" class="records">
+      <tr *ngFor="let item of users | async | slice:util.pagination?.from:util.pagination?.to; trackBy:trackById" class="records">
         <td *ngFor="let title of data?.titles">{{title.key==='date_of_birth' ? (item[title.key] | dayjs:'format':'DD MMM YY'):item[title.key]}}</td>
       </tr>
     </tbody>

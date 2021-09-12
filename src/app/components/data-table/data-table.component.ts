@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/shared/services';
 import { AppState } from 'src/app/store/app.state';
 import * as UserActions from '../../store/actions';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { UtilService } from 'src/app/shared/services/util/util.service';
 
 @Component({
   selector: 'app-data-table',
@@ -18,10 +19,10 @@ export class DataTableComponent implements OnInit {
   selectedCol;
   users: Observable<IUser[]>;
 
-
   constructor(
     private api: ApiService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    public util: UtilService
   ) {
     this.users = store.select('user');
   }

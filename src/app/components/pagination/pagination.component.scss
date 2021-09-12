@@ -3,4 +3,5 @@
 
 .pagination-wrapper {
   height: 60px;
+  @include flex(center, space-between);
 }

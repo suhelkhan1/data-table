@@ -1,1 +1,4 @@
-<div class="pagination-wrapper"></div>
+<div class="pagination-wrapper">
+  <div>Showing {{util.pagination.from}} to {{util.pagination.to}} of {{(users | async)?.length}} entries</div>
+  <div></div>
+</div>
