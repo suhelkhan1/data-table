@@ -8,4 +8,11 @@
   form {
     width: 300px;
   }
+  .limit-select {
+    ::ng-deep app-select {
+      mat-form-field {
+        width: 80px;
+      }
+    }
+  }
 }

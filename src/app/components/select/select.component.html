@@ -1,0 +1,8 @@
+<mat-form-field [appearance]="config?.appearance">
+  <mat-label *ngIf="config?.label">{{config?.label}}</mat-label>
+  <mat-select (valueChange)="selectChange.emit($event)" [(value)]="config.selected">
+    <mat-option *ngFor="let item of config?.data" [value]="item.value">
+      {{item.value}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

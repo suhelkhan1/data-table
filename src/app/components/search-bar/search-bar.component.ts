@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { UtilService } from 'src/app/shared/services/util/util.service';
 import { AppState } from 'src/app/store/app.state';
 import * as UserActions from '../../store/actions';
 
@@ -12,9 +13,15 @@ import * as UserActions from '../../store/actions';
 export class SearchBarComponent implements OnInit {
 
   searchForm: FormGroup;
+  selectData = [
+    { value: 10 },
+    { value: 50 },
+    { value: 100 }
+  ];
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    public util: UtilService
   ) { }
 
   ngOnInit(): void {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from './search-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputModule } from '../input/input.module';
+import { SelectModule } from '../select/select.module';
 
 
 
@@ -12,7 +13,8 @@ import { InputModule } from '../input/input.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    InputModule
+    InputModule,
+    SelectModule
   ]
 })
 export class SearchBarModule { }

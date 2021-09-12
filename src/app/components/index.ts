@@ -4,3 +4,4 @@ export { DataTableModule } from './data-table/data-table.module';
 export { HeaderModule } from './header/header.module';
 export { FooterModule } from './footer/footer.module';
 export { InputModule } from './input/input.module';
+export { SelectModule } from './select/select.module';
