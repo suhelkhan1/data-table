@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StoreModule } from '@ngrx/store';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PaginationModule } from '../pagination/pagination.module';
@@ -16,6 +17,7 @@ import { DataTableComponent } from './data-table.component';
     SharedModule,
     StoreModule,
     ScrollingModule,
+    DragDropModule,
     SearchBarModule,
     PaginationModule
   ]

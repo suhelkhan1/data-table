@@ -5,6 +5,7 @@ import { IData, IUser } from 'src/app/shared/models/data.model';
 import { ApiService } from 'src/app/shared/services';
 import { AppState } from 'src/app/store/app.state';
 import * as UserActions from '../../store/actions';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-data-table',
@@ -14,11 +15,6 @@ import * as UserActions from '../../store/actions';
 export class DataTableComponent implements OnInit {
 
   data: IData;
-  titles = [
-    { label: 'Title', key: 'original_title'},
-    { label: 'Rating', key: 'vote_average'},
-    { label: 'Release Date', key: 'release_date'}
-  ];
   selectedCol;
   users: Observable<IUser[]>;
 
@@ -37,15 +33,8 @@ export class DataTableComponent implements OnInit {
   getData(): void {
     this.api.get('assets/data/users.json').subscribe(res => {
       this.data = res;
-      this.store.dispatch({
-        type: UserActions.LIST_USERS,
-        payload: this.data.results
-      });
+      this.store.dispatch(new UserActions.ListUsers(this.data.results));
     });
-  }
-
-  keys(data): any {
-    return data ? Object.keys(data) : [];
   }
 
   sort(key): void {
@@ -53,14 +42,14 @@ export class DataTableComponent implements OnInit {
       return;
     }
     this.selectedCol = key;
-    this.store.dispatch({
-      type: UserActions.SORT_USERS,
-      payload: key
-    });
+    this.store.dispatch(new UserActions.SortUsers(key));
   }
 
   trackById(index: number, results: any): any {
     return results.id;
   }
 
+  drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.data.titles, event.previousIndex, event.currentIndex);
+  }
 }

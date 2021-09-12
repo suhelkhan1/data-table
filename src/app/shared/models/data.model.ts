@@ -3,7 +3,10 @@ export interface IData {
   results: IUser[];
   total_pages: number;
   total_results: number;
-  titles: any;
+  titles: [{
+    key: string,
+    label: string
+  }];
 }
 
 

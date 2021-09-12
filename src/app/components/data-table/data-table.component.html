@@ -1,24 +1,16 @@
 <div class="table-wrapper">
   <app-search-bar></app-search-bar>
-  <cdk-virtual-scroll-viewport itemSize="40" top="20" left="20" class="table-vr-component">
-    <table>
-      <thead>
-        <tr>
-          <th *ngFor="let key of keys(data?.titles)" (click)="sort(key)" [ngClass]="{'sort-col': key===selectedCol}">
-            {{data?.titles[key]}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *cdkVirtualFor="let item of users | async; trackBy:trackById">
-          <td>{{item.first_name}}</td>
-          <td>{{item.last_name}}</td>
-          <td>{{item.gender}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.city}}</td>
-          <td>{{item.date_of_birth | dayjs:'format':'DD MMM YY'}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </cdk-virtual-scroll-viewport>
+  <table>
+    <thead>
+      <tr cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+        <th *ngFor="let item of data?.titles" (click)="sort(item.key)" [ngClass]="{'sort-col': item.key===selectedCol}" cdkDrag>{{item.label}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users | async; trackBy:trackById" class="records">
+        <td *ngFor="let title of data?.titles">{{title.key==='date_of_birth' ? (item[title.key] | dayjs:'format':'DD MMM YY'):item[title.key]}}</td>
+      </tr>
+    </tbody>
+  </table>
   <app-pagination></app-pagination>
 </div>

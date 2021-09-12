@@ -21,15 +21,11 @@ export class SearchBarComponent implements OnInit {
     this.searchForm = new FormGroup({
       name: new FormControl('', [Validators.minLength(3)])
     });
-    this.store.subscribe(res => console.log(res));
   }
 
   search(value): void {
     if (this.searchForm.valid) {
-      this.store.dispatch({
-        type: UserActions.SEARCH_USERS,
-        payload: value
-      });
+      this.store.dispatch(new UserActions.SearchUsers(value));
     }
   }
 

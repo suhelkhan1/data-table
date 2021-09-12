@@ -9003,12 +9003,12 @@
     }
   ],
   "total_results": 1000,
-  "titles": {
-    "first_name": "First Name",
-    "last_name": "Last Name",
-    "gender": "Gender",
-    "email": "Email",
-    "city": "City",
-    "date_of_birth": "DOB"
-  }
+  "titles": [
+    { "key": "first_name", "label": "First Name"},
+    { "key": "last_name", "label": "Last Name"},
+    { "key": "gender", "label": "Gender"},
+    { "key": "email", "label": "Email"},
+    { "key": "city", "label": "City"},
+    { "key": "date_of_birth", "label": "DOB"}
+  ]
 }
