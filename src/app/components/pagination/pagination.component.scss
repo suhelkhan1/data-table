@@ -4,4 +4,14 @@
 .pagination-wrapper {
   height: 60px;
   @include flex(center, space-between);
+  .pagination-btn {
+    button {
+      min-width: auto;
+      margin: 0 5px;
+      &.selected-btn {
+        background-color: $primary-color;
+        color: $white;
+      }
+    }
+  }
 }

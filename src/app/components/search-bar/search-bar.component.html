@@ -1,6 +1,6 @@
 <div class="search-wrapper">
   <div class="limit-select">
-    Show <app-select [config]="{data: selectData, selected: 10}" (selectChange)="util.pagination = {from: 0, to: $event}"></app-select>
+    Show <app-select [config]="{data: selectData, selected: 10}" (selectChange)="util.pagination = {from: 0, to: $event, limit: $event}"></app-select>
   </div>
   <form [formGroup]="searchForm">
     <app-input [config]="{group: searchForm, controlName: 'name', label: 'Search by first name'}" (inputChange)="search($event)"></app-input>

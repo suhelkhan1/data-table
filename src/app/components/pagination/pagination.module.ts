@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { PaginationComponent } from './pagination.component';
 
 
@@ -8,7 +9,8 @@ import { PaginationComponent } from './pagination.component';
   declarations: [PaginationComponent],
   exports: [PaginationComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ]
 })
 export class PaginationModule { }

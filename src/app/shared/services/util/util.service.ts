@@ -7,7 +7,8 @@ export class UtilService {
 
   public pagination = {
     from: 0,
-    to: 10
+    to: 10,
+    limit: 10
   };
 
   constructor() { }

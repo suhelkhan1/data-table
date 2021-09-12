@@ -13,6 +13,11 @@ import { AppState } from 'src/app/store/app.state';
 export class PaginationComponent implements OnInit {
 
   users: Observable<IUser[]>;
+  selectedPage = 1;
+  btnRange = {
+    from: 0,
+    to: 5
+  };
 
   constructor(
     private store: Store<AppState>,
@@ -22,6 +27,25 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  setPage(pageNo): void {
+    if (this.selectedPage === pageNo) {
+      return;
+    }
+    if (pageNo === 1) {
+      Object.assign(this.util.pagination, {
+        from: 0,
+        to: this.util.pagination.limit
+      });
+      this.selectedPage = pageNo;
+      return;
+    }
+    Object.assign(this.util.pagination, {
+      from: (pageNo - 1) * this.util.pagination.limit,
+      to: pageNo * this.util.pagination.limit,
+    });
+    this.selectedPage = pageNo;
   }
 
 }
