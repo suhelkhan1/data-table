@@ -30,6 +30,7 @@ export class SearchBarComponent implements OnInit {
   search(value): void {
     if (this.searchForm.valid) {
       this.searchQuery.emit(value);
+      Object.assign(this.util.pagination, {from: 0, to: this.util.pagination.limit, page: 1});
     }
   }
 

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/shared/models/data.model';
 import { UtilService } from 'src/app/shared/services/util/util.service';
-import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-pagination',
@@ -12,19 +10,15 @@ import { AppState } from 'src/app/store/app.state';
 })
 export class PaginationComponent implements OnInit {
 
-  users: Observable<IUser[]>;
-  selectedPage = 1;
+  @Input() users: Observable<IUser[]>;
   btnRange = {
     from: 0,
     to: 5
   };
 
   constructor(
-    private store: Store<AppState>,
     public util: UtilService
-  ) {
-    this.users = store.select('user');
-  }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -34,7 +28,7 @@ export class PaginationComponent implements OnInit {
   }
 
   setPage(pageNo): void {
-    if (this.selectedPage === pageNo) {
+    if (this.util.pagination.page === pageNo) {
       return;
     }
     if (pageNo === 1) {
@@ -42,14 +36,14 @@ export class PaginationComponent implements OnInit {
         from: 0,
         to: this.util.pagination.limit
       });
-      this.selectedPage = pageNo;
+      this.util.pagination.page = pageNo;
       return;
     }
     Object.assign(this.util.pagination, {
       from: (pageNo - 1) * this.util.pagination.limit,
       to: pageNo * this.util.pagination.limit,
     });
-    this.selectedPage = pageNo;
+    this.util.pagination.page = pageNo;
   }
 
 }
