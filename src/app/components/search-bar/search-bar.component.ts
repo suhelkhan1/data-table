@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { UtilService } from 'src/app/shared/services/util/util.service';
-import { AppState } from 'src/app/store/app.state';
-import * as UserActions from '../../store/actions';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,6 +9,7 @@ import * as UserActions from '../../store/actions';
 })
 export class SearchBarComponent implements OnInit {
 
+  @Output() searchQuery = new EventEmitter();
   searchForm: FormGroup;
   selectData = [
     { value: 10 },
@@ -20,7 +18,6 @@ export class SearchBarComponent implements OnInit {
   ];
 
   constructor(
-    private store: Store<AppState>,
     public util: UtilService
   ) { }
 
@@ -32,7 +29,7 @@ export class SearchBarComponent implements OnInit {
 
   search(value): void {
     if (this.searchForm.valid) {
-      this.store.dispatch(new UserActions.SearchUsers(value));
+      this.searchQuery.emit(value);
     }
   }
 

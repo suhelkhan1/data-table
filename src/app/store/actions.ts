@@ -17,10 +17,4 @@ export class SortUsers implements Action {
     constructor(public payload: string) {}
 }
 
-export class SearchUsers implements Action {
-    readonly type = SEARCH_USERS;
-
-    constructor(public payload: string) {}
-}
-
-export type Actions = ListUsers | SortUsers | SearchUsers;
+export type Actions = ListUsers | SortUsers;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IData, IUser } from 'src/app/shared/models/data.model';
 import { ApiService } from 'src/app/shared/services';
@@ -7,6 +7,7 @@ import { AppState } from 'src/app/store/app.state';
 import * as UserActions from '../../store/actions';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { UtilService } from 'src/app/shared/services/util/util.service';
+import { searchUserSelector } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-data-table',
@@ -24,11 +25,15 @@ export class DataTableComponent implements OnInit {
     private store: Store<AppState>,
     public util: UtilService
   ) {
-    this.users = store.select('user');
+    this.setStore('');
   }
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  setStore(name): void {
+    this.users = this.store.pipe(select(searchUserSelector(name)));
   }
 
   getData(): void {

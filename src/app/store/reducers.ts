@@ -15,8 +15,6 @@ export function userReducer(state = initialState, action: UserActions.Actions): 
       } else {
         return state.slice().sort((a, b) => a[action.payload] > b[action.payload] ? 1 : -1);
       }
-    case UserActions.SEARCH_USERS:
-      return state.filter(item => item.first_name.toLowerCase().match(action.payload.toLowerCase()));
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 <div class="table-wrapper">
-  <app-search-bar></app-search-bar>
+  <app-search-bar (searchQuery)="setStore($event)"></app-search-bar>
   <table>
     <thead>
       <tr cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
