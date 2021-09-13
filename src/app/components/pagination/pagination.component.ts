@@ -29,6 +29,10 @@ export class PaginationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getBtnRange(length): any {
+    return [].constructor(Math.ceil(length / this.util.pagination.limit));
+  }
+
   setPage(pageNo): void {
     if (this.selectedPage === pageNo) {
       return;

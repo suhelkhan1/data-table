@@ -2,7 +2,7 @@
   <div>Showing {{util.pagination.from}} to {{util.pagination.to}} of {{(users | async)?.length}} entries</div>
   <div class="pagination-btn">
     <button mat-stroked-button color="primary" (click)="setPage(selectedPage-1)" [disabled]="selectedPage<=1">Previous</button>
-    <span *ngFor="let item of [].constructor((users | async)?.length/util.pagination.limit) | slice:btnRange.from:btnRange.to;let i=index">
+    <span *ngFor="let item of getBtnRange((users | async)?.length) | slice:btnRange.from:btnRange.to;let i=index">
       <button mat-stroked-button color="primary" [ngClass]="{'selected-btn': selectedPage==(i+1)}" (click)="setPage(i+1)">{{i+1}}</button>
     </span>
     <button mat-stroked-button color="primary" (click)="setPage(selectedPage+1)">Next</button>
